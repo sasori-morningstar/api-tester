@@ -1,0 +1,30 @@
+{
+  "name": "api-tester",
+  "version": "1.0.0",
+  "description": "Coded by sasori-morningstar for Mr. Nadjib Meha.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "api-tester"
+  },
+  "keywords": [
+    "api",
+    "request",
+    "test",
+    "scraper"
+  ],
+  "author": "sasori-morningstar",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "http-proxy-agent": "^7.0.2",
+    "https-proxy-agent": "^7.0.5",
+    "node-fetch": "^2.7.0"
+  }
+}
