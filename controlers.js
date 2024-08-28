@@ -1,48 +1,17 @@
 const fetch = require('node-fetch');
 const HttpsProxyAgent = require('https-proxy-agent');
 const HttpProxyAgent = require('http-proxy-agent');
-
-function request(req, res) {
-    res.status(200).json({ message: "Welcome to request." })
-}
+const {formatParamsForPost, formatUrlForGet} = require("./format")
 
 
-function formatUrlForGet(targetWebsite) {
-    const queries = targetWebsite.split("<and>")
-    const baseUrl = queries[0]
-
-    const url = new URL(baseUrl)
-    const searchParams = new URLSearchParams(url.search)
-
-    for (let i = 0; i < queries.length; i++) {
-        const [key, value] = queries[i].split("=")
-        searchParams.append(decodeURIComponent(key), decodeURIComponent(value))
-
-    }
-
-    url.search = searchParams.toString()
-
-    return url.toString()
-}
-
-function formatParamsForPost(postParams) {
-    const params = postParams.split("<and>")
-    const searchParams = new URLSearchParams()
-    for (let i = 0; i < params.length; i++) {
-        const [key, value] = params[i].split("=")
-        searchParams.append(decodeURIComponent(key), decodeURIComponent(value))
-
-    }
-    return searchParams.toString()
-}
 
 /* TEST HERE: 
-    GET: http://localhost:3000/api/fetch?method=GET&target=https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=4658%3Cand%3Emanga=4199%3Cand%3Emanga=11608
-    http://localhost:3000/api/fetch?method={METHOD}&target= {{targetWebsite}?{query}={value}<and>{query}={value}<and>...<and>{query}={value}} &{postParam}={postValue}&...&{postParam}={postValue}
+    GET: http://localhost:3000/api/request?method=GET&target=https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=4658%3Cand%3Emanga=4199%3Cand%3Emanga=11608
+    http://localhost:3000/api/request?method={METHOD}&target= {{targetWebsite}?{query}={value}<and>{query}={value}<and>...<and>{query}={value}} &{postParam}={postValue}&...&{postParam}={postValue}
 */
 /* TEST HERE:
-    POST: http://localhost:3000/api/fetch?method=POST&target=https://reqres.in/api/users/&params=name=ilyes<and>ggg=developer<and>...<and>value=key
-    http://localhost:3000/api/fetch?method={METHOD}&target= {{targetWebsite}&params={query}={value}<and>{query}={value}<and>...<and>{query}={value}}
+    POST: http://localhost:3000/api/request?method=POST&target=https://reqres.in/api/users/&params=name=ilyes<and>ggg=developer<and>...<and>value=key
+    http://localhost:3000/api/request?method={METHOD}&target= {{targetWebsite}&params={query}={value}<and>{query}={value}<and>...<and>{query}={value}}
 */
 async function nodeFetcher(req, res) {
     const method = req.query.method
@@ -91,6 +60,5 @@ async function nodeFetcher(req, res) {
 }
 
 module.exports = {
-    request,
     nodeFetcher
 }
