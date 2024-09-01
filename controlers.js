@@ -86,5 +86,5 @@ async function nodeFetcher(req, res) {
 
 module.exports = {
     nodeFetcher,
-    testProxy
+    //testProxy
 };
