@@ -1,0 +1,4 @@
+AcpVQtYstcLT4Q7d:wifi;fr;;;@rotating.proxyempire.io:9000
+AcpVQtYstcLT4Q7d:wifi;fr;;;@rotating.proxyempire.io:9001
+AcpVQtYstcLT4Q7d:wifi;fr;;;@rotating.proxyempire.io:9002
+AcpVQtYstcLT4Q7d:wifi;fr;;;@rotating.proxyempire.io:9003
