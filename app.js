@@ -7,10 +7,10 @@ const routes = require("./routes")
 
 require("dotenv").config()
 
-const PORT = process.env.PORT
+const PORT = Number(process.env.PORT)
 const SECRET = process.env.SECRET
 
-app.listen(PORT, ()=>{
+app.listen(PORT, '0.0.0.0',()=>{
     console.log(`Server is running on port: ${PORT}`)
 })
 
